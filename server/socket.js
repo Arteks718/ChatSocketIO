@@ -13,7 +13,7 @@ const socketInit = (httpServer) => {
         const createdMessage = await Message.create(payload)
         io.emit('NEW_MESSAGE_CREATED', createdMessage.toObject())
       } catch (error) {
-        
+        socket.emit('NEW_MESSAGE_ERROR', error)
       }
     })
   })
